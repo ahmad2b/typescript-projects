@@ -6,6 +6,7 @@ All CLI Projects
 + Number Guess Game
 + ATM
 + ToDo List
++ Word Counter
 
 # NPM Packages
 
@@ -13,3 +14,4 @@ All CLI Projects
 + npx proj-guessgame
 + npx proj-atm
 + npx proj-todo-list
++ npx proj-word-counter
