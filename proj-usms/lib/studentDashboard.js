@@ -2,6 +2,9 @@ import inquirer from "inquirer";
 import chalk from "chalk";
 import { coursesData, studentsData } from "./Data.js";
 import { display } from "./Announcement.js";
+import { main } from "./calculator.js";
+import { mainList } from "./todolist.js";
+import { userLogin } from "./Login.js";
 let end = false;
 export async function enterDash() {
     console.log(chalk.magentaBright("\nPlease enter your login details"));
@@ -41,7 +44,6 @@ export async function enterDash() {
             ]);
             switch (studentDashboard.studentDashboard) {
                 case "View Profile":
-                    // console.log(chalk.green("\n"));
                     studentsData.find((student) => {
                         if (student._username == enterDash.username) {
                             student.viewProfile();
@@ -49,11 +51,10 @@ export async function enterDash() {
                     });
                     break;
                 case "Announcements":
-                    // console.log(chalk.green("\n"));
                     display();
                     break;
                 case "Exams":
-                    console.log(chalk.green("Exams"));
+                    console.log(chalk.green("Exams\n"));
                     break;
                 case "View All Course":
                     console.log(chalk.green("View All Course"));
@@ -66,9 +67,10 @@ export async function enterDash() {
                             student.viewCoursesEnrolled();
                         }
                     });
+                    console.log("\n");
                     break;
                 case "Enroll in New Courses":
-                    console.log(chalk.green("Enroll in New Courses"));
+                    console.log(chalk.green("\nEnroll in New Courses\n"));
                     const enrollCourse = await inquirer.prompt([
                         {
                             name: "enrollCourse",
@@ -83,14 +85,30 @@ export async function enterDash() {
                     console.log(chalk.green("Fee/Balance"));
                     break;
                 case "Tools":
-                    console.log(chalk.green("Tools"));
+                    console.log("\n");
+                    const tools = await inquirer.prompt([
+                        {
+                            name: "tools",
+                            message: "Select the Tool",
+                            type: "list",
+                            choices: ["Calculator", "ToDo List"]
+                        }
+                    ]);
+                    switch (tools.tools) {
+                        case "Calculator":
+                            await main();
+                            break;
+                        case "ToDo List":
+                            await mainList();
+                            break;
+                        default:
+                            console.log(chalk.red("Invalid Input"));
+                            break;
+                    }
                     break;
                 case "Logout":
-                    //    console.log(chalk.green("Logout"));
-                    console.log(chalk.green("Logging Out..."));
+                    console.log(chalk.yellow("Logging Out..."));
                     console.log("\n");
-                    // console.log("\n");
-                    // console.log(coursesData);
                     end = true;
                     break;
                 default:
@@ -112,8 +130,8 @@ export async function enterDash() {
         ]);
         if (enterAgain.try === "Yes") {
             console.log("\nEntering Again");
-            enterDash();
-            //userLogin(); // enterDash is not working here which is why we are redirecting it to userLogin
+            //enterDash();
+            userLogin(); // enterDash is not working here which is why we are redirecting it to userLogin
         }
     }
 }

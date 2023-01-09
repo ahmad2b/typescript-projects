@@ -33,7 +33,7 @@ export class Student extends Person {
     }
     setCourseEnrolled(course) {
         this._courses.push(course);
-        console.log(chalk.greenBright(`Successfully Enrolled in ${this._courses} Course`));
+        console.log(chalk.greenBright(`Successfully Enrolled in ${this._courses} Course\n`));
         // course.addStudents(this);       
     }
 }

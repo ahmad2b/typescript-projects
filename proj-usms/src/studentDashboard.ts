@@ -1,18 +1,15 @@
 import inquirer from "inquirer";
-import chalk, { supportsColorStderr } from "chalk";
-import { Student } from "./Student.js";
-import { Instructor } from "./Instructor.js";
-import { Course } from "./Course.js";
+import chalk from "chalk";
 import { coursesData, studentsData } from "./Data.js";
-import { userLogin } from "./Login.js";
 import { display } from "./Announcement.js";
+import { main } from "./calculator.js";
+import { mainList } from "./todolist.js";
+import { userLogin } from "./Login.js";
 
 let end: boolean = false;
 
 export async function enterDash() {
-
     console.log(chalk.magentaBright("\nPlease enter your login details"));
-
     const enterDash = await inquirer.prompt([
         {
             name: "username",
@@ -32,7 +29,6 @@ export async function enterDash() {
 
     if (user) {
         console.log(chalk.greenBright(`\nWelcome ${user._name}! You Have Successfuly Logined\n`));
-
         do{
             const studentDashboard = await inquirer.prompt([
             {
@@ -54,7 +50,6 @@ export async function enterDash() {
             ]);
             switch (studentDashboard.studentDashboard) {
             case "View Profile":
-                // console.log(chalk.green("\n"));
                 studentsData.find((student) => {
                     if(student._username == enterDash.username){
                     student.viewProfile();
@@ -62,11 +57,10 @@ export async function enterDash() {
                 });
                 break;
             case "Announcements":
-                // console.log(chalk.green("\n"));
                 display();
                 break;
             case "Exams":
-                console.log(chalk.green("Exams"));
+                console.log(chalk.green("Exams\n"));
                 break;
             case "View All Course":
                 console.log(chalk.green("View All Course"));
@@ -78,9 +72,10 @@ export async function enterDash() {
                     if(student._username == enterDash.username){
                     student.viewCoursesEnrolled();
                     }});
+                    console.log("\n");
                 break;
             case "Enroll in New Courses":
-                console.log(chalk.green("Enroll in New Courses"));
+                console.log(chalk.green("\nEnroll in New Courses\n"));
                 const enrollCourse = await inquirer.prompt([
                     {
                         name: "enrollCourse",
@@ -95,15 +90,30 @@ export async function enterDash() {
                 console.log(chalk.green("Fee/Balance"));
                 break;
             case "Tools":
-                console.log(chalk.green("Tools"));
+                console.log("\n");
+                const tools = await inquirer.prompt([
+                    {
+                        name: "tools",
+                        message: "Select the Tool",
+                        type: "list",
+                        choices: ["Calculator", "ToDo List"]
+                    }
+                ]);
+                    switch(tools.tools) {
+                        case "Calculator":
+                           await main();
+                           break;
+                        case "ToDo List":
+                            await mainList();
+                            break;  
+                        default:
+                            console.log(chalk.red("Invalid Input"));
+                            break;  
+                    }       
                 break;
             case "Logout":
-            //    console.log(chalk.green("Logout"));
-                console.log(chalk.green("Logging Out..."));
-                console.log("\n");
-                // console.log("\n");
-                // console.log(coursesData);
-                
+                console.log(chalk.yellow("Logging Out..."));
+                console.log("\n");                
                 end = true;
                 break;
             default:
@@ -127,8 +137,8 @@ export async function enterDash() {
 
         if(enterAgain.try === "Yes"){
             console.log("\nEntering Again");
-            enterDash();
-            //userLogin(); // enterDash is not working here which is why we are redirecting it to userLogin
+            //enterDash();
+            userLogin(); // enterDash is not working here which is why we are redirecting it to userLogin
        
         }
     }

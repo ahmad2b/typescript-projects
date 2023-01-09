@@ -109,7 +109,7 @@ async function instructortRegister() {
     }
 }
 async function register() {
-    console.log(chalk.magentaBright("\nPlease select one of the following options"));
+    console.log(chalk.magentaBright("\nHow do you want to register?"));
     const appRegister = await inquirer.prompt([
         {
             name: "register",
