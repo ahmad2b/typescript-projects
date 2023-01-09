@@ -26,7 +26,10 @@ const main = async () => {
     console.log(chalk.greenBright(`\nWord Count: ${wordCount}`));
 
     const characterCount = word.word.length;
-    console.log(chalk.greenBright(`Character Count: ${characterCount}\n`));
+    console.log(chalk.greenBright(`Character Count (with spaces): ${characterCount}\n`));
+
+    const characterCountWoSpaces = word.word.replace(/ /g,"").length;
+    console.log(chalk.greenBright(`Character Count (without spaces): ${characterCount}\n`));
 
 }
 
