@@ -7,6 +7,7 @@ All CLI Projects
 + ATM
 + ToDo List
 + Word Counter
++ University Management System
 
 # NPM Packages
 
@@ -15,3 +16,4 @@ All CLI Projects
 + npx proj-atm
 + npx proj-todo-list
 + npx proj-word-counter
++ npx proj-usms
