@@ -8,6 +8,8 @@ All CLI Projects
 + ToDo List
 + Word Counter
 + University Management System
++ Currency Converter
++ CountDown Timer
 
 # NPM Packages
 
@@ -17,3 +19,5 @@ All CLI Projects
 + npx proj-todo-list
 + npx proj-word-counter
 + npx proj-usms
++ npx proj-currencyconverter
++ npx proj-countdowntimer
