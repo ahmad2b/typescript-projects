@@ -10,6 +10,7 @@ All CLI Projects
 + University Management System
 + Currency Converter
 + CountDown Timer
++ Quiz System
 
 # NPM Packages
 
@@ -21,3 +22,4 @@ All CLI Projects
 + npx proj-usms
 + npx proj-currencyconverter
 + npx proj-countdowntimer
++ npx proj-quizsystem
