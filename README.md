@@ -1,6 +1,6 @@
 # typescript-projects
 
-All CLI Projects
+## All CLI Projects
 
 + Calculator
 + Number Guess Game
@@ -11,8 +11,9 @@ All CLI Projects
 + Currency Converter
 + CountDown Timer
 + Quiz System
++ Project Adventure Game
 
-# NPM Packages
+## NPM Packages
 
 + npx proj-calculator
 + npx proj-guessgame
@@ -23,3 +24,4 @@ All CLI Projects
 + npx proj-currencyconverter
 + npx proj-countdowntimer
 + npx proj-quizsystem
++ npx proj-adventure_game
